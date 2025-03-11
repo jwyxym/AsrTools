@@ -127,7 +127,7 @@ class ASRWidget(QWidget):
     def __init__(self):
         super().__init__()
         self.init_ui()
-        self.max_threads = 3  # 设置最大线程数
+        self.max_threads = 10  # 设置最大线程数
         self.thread_pool = QThreadPool()
         self.thread_pool.setMaxThreadCount(self.max_threads)
         self.processing_queue = []
@@ -142,7 +142,7 @@ class ASRWidget(QWidget):
         engine_label = BodyLabel("选择接口:", self)
         engine_label.setFixedWidth(70)
         self.combo_box = ComboBox(self)
-        self.combo_box.addItems(['B 接口', 'J 接口', 'K 接口', 'Whisper'])
+        self.combo_box.addItems(['B 接口', 'K 接口'])
         engine_layout.addWidget(engine_label)
         engine_layout.addWidget(self.combo_box)
         layout.addLayout(engine_layout)
