@@ -236,7 +236,7 @@ class ASRWidget(QWidget):
 
         self.table.selectRow(current_row)
 
-        menu = RoundMenu(self)
+        menu = RoundMenu(title="", parent=self)
         reprocess_action = Action(FIF.SYNC, "重新处理")
         delete_action = Action(FIF.DELETE, "删除任务")
         open_dir_action = Action(FIF.FOLDER, "打开文件目录")
@@ -437,7 +437,7 @@ class InfoWidget(QWidget):
 
     def init_ui(self):
         # GitHub URL 和仓库描述
-        GITHUB_URL = "https://github.com/WEIFENG2333/AsrTools"
+        GITHUB_URL = "https://github.com/jwyxym/AsrTools"
         REPO_DESCRIPTION = """
     🚀 无需复杂配置：无需 GPU 和繁琐的本地配置，小白也能轻松使用。
     🖥️ 高颜值界面：基于 PyQt5 和 qfluentwidgets，界面美观且用户友好。
@@ -516,10 +516,7 @@ def video2audio(input_file: str, output: str = "") -> bool:
     ]
     result = subprocess.run(cmd, capture_output=True, check=True, encoding='utf-8', errors='replace')
 
-    if result.returncode == 0 and Path(output).is_file():
-        return True
-    else:
-        return False
+    return result.returncode == 0 and Path(output).is_file()
 
 def start():
     # enable dpi scale
